@@ -11,11 +11,9 @@ abstract class FoodDatabase : RoomDatabase() {
 
     abstract fun foodDao(): FoodDAO
 
-    //Database de conflict çıkmaması için Singleton yapacağız.
     companion object {
 
         @Volatile private var instance : FoodDatabase? = null
-        //Volatile farklı threadlere database nesnesini görünür kılmak için eklenir.
 
         private val lock = Any()
 
