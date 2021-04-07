@@ -12,10 +12,6 @@ interface FoodDAO {
 
     @Insert
     suspend fun insertAll(vararg food : Food) : List<Long>
-    // Insert -> Room insert into
-    // suspend -> coroutine scope
-    // vararg -> Bir veya birden fazla Food objesi verebilmemizi sağlar
-    // List<Long> -> geriye id listesi dönecek
 
     @Query("SELECT * FROM food")
     suspend fun getAllFood() : List<Food>
