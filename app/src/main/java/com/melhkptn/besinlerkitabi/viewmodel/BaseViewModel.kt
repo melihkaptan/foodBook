@@ -7,9 +7,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-//Coroutine buraya uygulanacak.
-//AndroidViewModel -> application context aware yani uygulamanın context'i ile çalışır.
-
 open class BaseViewModel(
     application: Application
 
