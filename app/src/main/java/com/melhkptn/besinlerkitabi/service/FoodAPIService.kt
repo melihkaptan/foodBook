@@ -10,8 +10,8 @@ class FoodAPIService {
 
     private val api = Retrofit.Builder()
         .baseUrl(Companion.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create()) // JSON formatını modele çeviricez
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) //RxJava kullandığımız için belirtiyoruz.
+        .addConverterFactory(GsonConverterFactory.create()) 
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create()) 
         .build()
         .create(FoodAPI::class.java)
 
