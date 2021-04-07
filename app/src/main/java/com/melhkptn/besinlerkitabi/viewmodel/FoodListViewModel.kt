@@ -22,7 +22,7 @@ class FoodListViewModel(application: Application) : BaseViewModel(application) {
     private val disposable = CompositeDisposable()
     private val foodAPIService = FoodAPIService()
     private val privateSharedPrefences = PrivateSharedPrefences(getApplication())
-    private val updateTime = 10 * 60 * 1000 * 1000 * 1000L // Nano time metriğinde 10 dk
+    private val updateTime = 10 * 60 * 1000 * 1000 * 1000L 
 
     fun refreshData() {
 
@@ -51,7 +51,6 @@ class FoodListViewModel(application: Application) : BaseViewModel(application) {
             foodList.value = dao.getAllFood()
             foodList.value?.let {
                 showFoodList(it)
-                Toast.makeText(getApplication(),"Verileri roomdan aldık",Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -67,7 +66,6 @@ class FoodListViewModel(application: Application) : BaseViewModel(application) {
                 .subscribeWith(object : DisposableSingleObserver<List<Food>>() {
                     override fun onSuccess(t: List<Food>) {
                         saveRoom(t)
-                        Toast.makeText(getApplication(),"Verileri internetten aldık",Toast.LENGTH_LONG).show()
                     }
 
                     override fun onError(e: Throwable) {
@@ -91,7 +89,7 @@ class FoodListViewModel(application: Application) : BaseViewModel(application) {
             val dao = FoodDatabase(getApplication()).foodDao()
             dao.deleteAllFood()
             val uuidList =
-                dao.insertAll(*listFood.toTypedArray()) //besinleri tek tek bu şekilde verebiliyoruz.
+                dao.insertAll(*listFood.toTypedArray())
             var index: Int = 0
             while (index < listFood.size) {
                 listFood[index].uuid = uuidList[index].toInt()
